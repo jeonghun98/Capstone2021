@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/_dinu"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <TextView
+        android:id="@+id/howtogametxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/pfstardust"
+        android:text="게임방법"
+        android:textColor="#303F9F"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.040" />
+
+    <ScrollView
+        android:id="@+id/howto_scroll"
+        android:layout_width="417dp"
+        android:layout_height="680dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/howtogametxt"
+        app:layout_constraintVertical_bias="0.396">
+
+        <TextView
+            android:id="@+id/explaingame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pfstardust"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:text="1. 랜드마크 탐색\n블라블라블라\n\n\n2. 2차 추가문제 풀기\n문제푸세요\n블라블라\n\n\n3. 스탬프 획득하기\n획득\n하세요\n\n\n4.모두 모으면 성공\n모아모아\n\n\n\n\n\n"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="40sp" />
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
