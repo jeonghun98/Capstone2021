@@ -4,7 +4,16 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+<<<<<<< HEAD
     }
 }
 rootProject.name = "IWU_Quiz"
+=======
+        maven {
+            url 'https://naver.jfrog.io/artifactory/maven/'
+        }
+    }
+}
+rootProject.name = "IWU"
+>>>>>>> e5239febb7a3c646eb749de197d227f7937e976f
 include ':app'
