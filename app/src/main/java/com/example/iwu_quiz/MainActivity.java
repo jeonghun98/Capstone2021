@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity { // 카메라 액티비티
 
         previewFrame = findViewById(R.id.previewFrame);
         cameraView = findViewById(R.id.cameraView);
-
+        //권한 Main -> Start
 //        AndPermission.with(this) // 카메라, 위치 권한 확인
 //                .runtime()
 //                .permission(Permission.CAMERA,Permission.ACCESS_FINE_LOCATION)
