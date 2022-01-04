@@ -65,7 +65,7 @@ public class LogInActivity extends AppCompatActivity {
                                 String userMajor = jsonObject.getString( "u_major" );
                                 String userPhone = jsonObject.getString( "u_phone" );
 
-                                Toast.makeText(getApplicationContext(),userMajor + " "+ userName +"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(),userMajor + " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this, StartActivity.class);
                                 intent.putExtra("u_id", userID);
                                 intent.putExtra("u_pw", userPass);
