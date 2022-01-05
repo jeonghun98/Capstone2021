@@ -11,6 +11,6 @@ public class InforActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super .onCreate(savedInstanceState);
-        setContentView(R.layout.activity_infor); // information 화면 실행
+        setContentView(R.layout.activity_infor); // 게임정보 화면 실행
     }
 }

@@ -1,13 +1,11 @@
 package org.techtown.iwu;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 //로그인 후, 메인 화면 전 나오는 메뉴 Activity
@@ -17,47 +15,49 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_menu); // activity_menu 띄움.
 
-
+        //EnterButton(입장하기)의 Click이벤트
         EnterButton = (Button) findViewById(R.id.EnterButton);
 
-        //EnterButton의 Click이벤트
         EnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainButtonActivity.class); // MainActivity 실행
                 startActivity(intent);
             }
         });
 
+        //RuleButton(게임방법)의 Click이벤트
         RuleButton = (Button) findViewById(R.id.RuleButton);
 
         RuleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RuleActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RuleActivity.class); // RuleActivity 실행
                 startActivity(intent);
             }
         });
 
+        //LogoutButton(로그아웃)의 Click이벤트
         LogoutButton = (Button) findViewById(R.id.LogOutButton);
 
         LogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LogInActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LogInActivity.class); // LogInActivity 실행
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show(); // 짧은 메세지 등장
             }
         });
 
+        //InforButton(게임정보)의 Click이벤트
         InforButton = (Button) findViewById(R.id.InforButton);
 
         InforButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), InforActivity.class);
+                Intent intent = new Intent(getApplicationContext(), InforActivity.class); // InforActivity 실행
                 startActivity(intent);
             }
         });

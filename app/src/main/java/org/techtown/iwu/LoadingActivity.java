@@ -12,13 +12,13 @@ public class LoadingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loading);
+        setContentView(R.layout.activity_loading); // 로딩화면 실행
 
         startLoading();
     }
 
     private void startLoading() { // 로딩화면 구현 함수
-        Handler handler = new Handler();
+        Handler handler = new Handler(); // delay 주기 위해 선언함.
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {  // 로딩 후 구현될 Activity 설정하는 함수

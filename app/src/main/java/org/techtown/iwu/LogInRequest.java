@@ -10,21 +10,19 @@ import java.util.Map;
 
 public class LogInRequest extends StringRequest {
 
-    // 서버 URL 설정 ( PHP 파일 연동 )
-    final static private String URL = "http://taekyung.dothome.co.kr/Login.php";
+    final static private String URL = "http://taekyung.dothome.co.kr/Login.php"; // 서버 URL 설정 ( PHP 파일 연동 )
     private Map<String, String> map;
 
-
-    public LogInRequest(String userID, String userPassword, Response.Listener<String> listener) {
+    public LogInRequest(String userID, String userPassword, Response.Listener<String> listener) { // 요청 값 받아와서 mapping
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
         map.put("u_id",userID);
-        map.put("u_pw", userPassword);
+        map.put("u_pw", userPassword); // 받은 ID와 PW를 mapping
     }
 
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
-        return map;
+        return map; // map 리턴
     }
 }

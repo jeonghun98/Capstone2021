@@ -15,7 +15,7 @@ public class RegisterRequest extends StringRequest {
     final static private String URL = "http://taekyung.dothome.co.kr/register.php";
     private Map<String, String> map;
 
-
+    // 요청 값 받아와서 mapping
     public RegisterRequest(String userID, String userPassword, String userName, String userMajor, int userPhone, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 

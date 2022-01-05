@@ -26,11 +26,11 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login); // 맨 처음 로그인 화면 띄움
 
-        u_id = findViewById(R.id.u_id);
+        u_id = findViewById(R.id.u_id); // 입력받은 ID와 PW 넘겨받기
         u_pw = findViewById(R.id.u_pw);
-        btn_login = findViewById(R.id.LogInButton);
+        btn_login = findViewById(R.id.LogInButton); // 로그인버튼과 유저등록버튼 넘겨받기
         btn_signup = findViewById(R.id.SignUpButton);
 
 
@@ -39,7 +39,7 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LogInActivity.this, RegisterActivity.class); // 유저등록하는 Register Activity로 넘어감
-                startActivity(intent);
+                startActivity(intent); // Register Activity 시작
             }
         });
 
@@ -47,16 +47,16 @@ public class LogInActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // EditText에 현재 입력되어있는 값을 get(가져온다)해온다.
-                String userID = u_id.getText().toString();
+                // EditText에 현재 입력되어있는 값을 get(가져온다)해옴
+                String userID = u_id.getText().toString(); // string으로 받기
                 String userPass = u_pw.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
-                    public void onResponse(String response) {
+                    public void onResponse(String response) { // DB와 연동하여 로그인된 회원의 정보를 받아오는 함수
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
+                            JSONObject jsonObject = new JSONObject(response); // string들로 구성된 회원 정보들을 받음
+                            boolean success = jsonObject.getBoolean("success"); // 인자로 전달된 key에 대한 객체를 "success" 할 시 True 리턴
                             if (success) { // 로그인에 성공한 경우 유저의 정보를 모두 받아옴.
                                 String userID = jsonObject.getString("u_id");
                                 String userPass = jsonObject.getString("u_pw");
@@ -65,27 +65,29 @@ public class LogInActivity extends AppCompatActivity {
                                 String userPhone = jsonObject.getString( "u_phone" );
 
                                 Toast.makeText(getApplicationContext(),userMajor + " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LogInActivity.this, MenuActivity.class); // 로그인 후 시작 전 화면(메인 전)으로 이동
-                                intent.putExtra("u_id", userID);
+                                Intent intent = new Intent(LogInActivity.this, MenuActivity.class); // 로그인 후 메뉴화면으로 이동
+                                intent.putExtra("u_id", userID); // Menu Activity로 유저정보 넘김
                                 intent.putExtra("u_pw", userPass);
                                 intent.putExtra("u_name", userName);
                                 intent.putExtra("u_major", userMajor);
                                 intent.putExtra("u_phone", userPhone);
 
-                                startActivity(intent);
+                                startActivity(intent); // Menu Activity 시작
                             }
                             else { // 로그인에 실패한 경우
                                 Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show();
                                 return;
                             }
-                        } catch (JSONException e) {
+                        } catch (JSONException e) { // 예외처리
                             e.printStackTrace();
                         }
                     }
                 };
+
+                // 서버로 Volley를 이용해 정보 넘김.
                 LogInRequest loginRequest = new LogInRequest(userID, userPass, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LogInActivity.this);
-                queue.add(loginRequest); // 큐에 넘김
+                queue.add(loginRequest);
             }
         });
 
