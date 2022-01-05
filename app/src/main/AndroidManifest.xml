@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IWU">
         <activity
-            android:name=".SplashActivity"
+            android:name=".LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
         <activity android:name=".LogInActivity"/>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".StartActivity"/>
+        <activity android:name=".MenuActivity"/>
         <activity android:name=".InforActivity"/>
         <activity android:name=".RuleActivity"/>
         <activity android:name=".MapActivity"/>

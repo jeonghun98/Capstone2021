@@ -16,15 +16,17 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+//회원가입 Activity
+
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText u_id, u_pw, u_name, u_phone, u_major;
+    private EditText u_id, u_pw, u_name, u_phone;
 
 
     private Button btn_register;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { // 액티비티 시작시 처음으로 실행되는 생명주기!
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
@@ -32,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         u_id = findViewById(R.id.u_id);
         u_pw = findViewById(R.id.u_pw);
         u_name = findViewById(R.id.u_name);
-        Spinner spinner = (Spinner)findViewById(R.id.majorbox);
+        Spinner spinner = (Spinner)findViewById(R.id.majorbox); // 학과는 Spinner를 통해 받음
         u_phone = findViewById(R.id.u_phone);
 
 
@@ -45,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String userID = u_id.getText().toString();
                 String userPass = u_pw.getText().toString();
                 String userName = u_name.getText().toString();
-                String userMajor = spinner.getSelectedItem().toString();
+                String userMajor = spinner.getSelectedItem().toString(); // Spinner 값을 string으로 받아 userMajor로 넘김
                 int userPhone = Integer.parseInt(u_phone.getText().toString());
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {

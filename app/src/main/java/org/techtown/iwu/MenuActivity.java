@@ -10,8 +10,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class StartActivity extends AppCompatActivity {
-    Button EnterButton, RuleButton,LogoutButton, InforButton;
+//로그인 후, 메인 화면 전 나오는 메뉴 Activity
+
+public class MenuActivity extends AppCompatActivity {
+    Button EnterButton, RuleButton,LogoutButton, InforButton; // 입장하기, 게임설명, 로그아웃, 게임정보
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,6 +6,8 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+//로그인 위한 DB연동 Activity
+
 public class LogInRequest extends StringRequest {
 
     // 서버 URL 설정 ( PHP 파일 연동 )

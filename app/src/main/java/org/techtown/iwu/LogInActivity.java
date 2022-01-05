@@ -1,9 +1,7 @@
 package org.techtown.iwu;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,12 +16,12 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+
+//로그인 Activity
 
 public class LogInActivity extends AppCompatActivity {
-    private EditText u_id, u_pw;
-    private Button btn_login, btn_signup;
+    private EditText u_id, u_pw; // 넘겨받는 ID, PW
+    private Button btn_login, btn_signup; // 로그인, 유저등록 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +38,12 @@ public class LogInActivity extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class); // 유저등록하는 Register Activity로 넘어감
                 startActivity(intent);
             }
         });
 
+        // 로그인 버튼 클릭 시
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +57,7 @@ public class LogInActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
-                            if (success) { // 로그인에 성공한 경우
+                            if (success) { // 로그인에 성공한 경우 유저의 정보를 모두 받아옴.
                                 String userID = jsonObject.getString("u_id");
                                 String userPass = jsonObject.getString("u_pw");
                                 String userName = jsonObject.getString( "u_name" );
@@ -66,7 +65,7 @@ public class LogInActivity extends AppCompatActivity {
                                 String userPhone = jsonObject.getString( "u_phone" );
 
                                 Toast.makeText(getApplicationContext(),userMajor + " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LogInActivity.this, StartActivity.class);
+                                Intent intent = new Intent(LogInActivity.this, MenuActivity.class); // 로그인 후 시작 전 화면(메인 전)으로 이동
                                 intent.putExtra("u_id", userID);
                                 intent.putExtra("u_pw", userPass);
                                 intent.putExtra("u_name", userName);
@@ -86,7 +85,7 @@ public class LogInActivity extends AppCompatActivity {
                 };
                 LogInRequest loginRequest = new LogInRequest(userID, userPass, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LogInActivity.this);
-                queue.add(loginRequest);
+                queue.add(loginRequest); // 큐에 넘김
             }
         });
 

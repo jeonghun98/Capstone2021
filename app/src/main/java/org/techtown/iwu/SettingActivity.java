@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+//메인화면에서의 Setting Activity
+
 public class SettingActivity extends AppCompatActivity {
     Button RuleButton,LogoutButton, InforButton;
     @Override
