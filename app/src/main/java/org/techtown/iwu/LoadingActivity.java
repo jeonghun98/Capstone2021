@@ -17,15 +17,15 @@ public class LoadingActivity extends AppCompatActivity {
         startLoading();
     }
 
-    private void startLoading() {
+    private void startLoading() { // 로딩화면 구현 함수
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
-            public void run() {
-                Intent intent = new Intent(getBaseContext(), LogInActivity.class);
-                startActivity(intent);
-                finish();
+            public void run() {  // 로딩 후 구현될 Activity 설정하는 함수
+                Intent intent = new Intent(getBaseContext(), LogInActivity.class); // 로딩화면 후 로그인 화면 실행
+                startActivity(intent); // LogInActivity 시작
+                finish(); // LoadingActivity 종료
             }
-        }, 2000);
+        }, 2000); //약 2초간 실행
     }
 }
