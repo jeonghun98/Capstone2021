@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity { // 카메라 액티비티
         builder.setPositiveButton("2차 퀴즈", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) { //quiz 액티비티 호출
-                Intent intent = new Intent(getApplicationContext(), Quiz.class);
+                Intent intent = new Intent(MainActivity.this, Quiz.class);
                 startActivityForResult(intent, REQUEST_CODE_MENU);
             }
         });
