@@ -1,7 +1,7 @@
 package org.techtown.iwu;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.appcompat.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -64,7 +64,7 @@ public class LogInActivity extends AppCompatActivity {
                                 String userMajor = jsonObject.getString( "u_major" );
                                 String userPhone = jsonObject.getString( "u_phone" );
 
-                                Toast.makeText(getApplicationContext(),userMajor + " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LogInActivity.this,userMajor + " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this, MenuActivity.class); // 로그인 후 메뉴화면으로 이동
                                 intent.putExtra("u_id", userID); // Menu Activity로 유저정보 넘김
                                 intent.putExtra("u_pw", userPass);
@@ -75,8 +75,7 @@ public class LogInActivity extends AppCompatActivity {
                                 startActivity(intent); // Menu Activity 시작
                             }
                             else { // 로그인에 실패한 경우
-                                Toast.makeText(getApplicationContext(),"로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show();
-                                return;
+                                Toast.makeText(LogInActivity.this, "로그인 실패하였습니다.", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) { // 예외처리
                             e.printStackTrace();

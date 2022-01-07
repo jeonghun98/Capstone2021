@@ -6,7 +6,7 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
         maven {
             url 'https://naver.jfrog.io/artifactory/maven/'
-        }
+        } // 네이버지도API 사용 시 필요
     }
 }
 rootProject.name = "IWU"
