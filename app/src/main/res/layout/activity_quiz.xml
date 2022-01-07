@@ -4,38 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Quiz">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/t1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:text="Quiz"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/t1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="120dp"
-            android:text="정보기술대 Quiz"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/t2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="80dp"
-
-            android:text="컴퓨터공학부 학과사무실은 \n 몇동 몇호일까요?"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/t2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:text="Question"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <Button
@@ -43,7 +39,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="1" />
 
             <TextView
@@ -51,14 +47,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <Button
@@ -66,7 +62,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="2" />
 
             <TextView
@@ -74,14 +70,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <Button
@@ -89,7 +85,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="3" />
 
             <TextView
@@ -97,14 +93,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="100dp"
             android:orientation="horizontal">
 
             <Button
@@ -112,7 +108,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="4" />
 
             <TextView
@@ -120,11 +116,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textSize="20sp" />
         </LinearLayout>
-
-    </LinearLayout>
 
 </LinearLayout>

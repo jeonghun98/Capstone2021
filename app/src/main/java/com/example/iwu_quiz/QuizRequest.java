@@ -10,14 +10,14 @@ import java.util.Map;
 public class QuizRequest extends StringRequest {
 
     //서버 url 설정(php파일 연동)
-    final static  private String URL="http://hun9898.dothome.co.kr/QuizList1.php";
+    final static  private String URL="http://hun9898.dothome.co.kr/Quiz.php";
     private Map<String,String> map;
 
-    public QuizRequest(String b_id, Response.Listener<String>listener){
+    public QuizRequest(int b_id, Response.Listener<String>listener){
         super(Method.POST,URL,listener,null);
 
         map=new HashMap<>();
-        map.put("b_id",b_id);
+        map.put("b_id",b_id + "");
 
     }
 
