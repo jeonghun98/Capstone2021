@@ -28,21 +28,29 @@
             >
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="200dp"
-                >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/imageButton1"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="150dp"
                     android:background="#00FFFFFF"
                     android:clickable="false"
-                    android:onClick="AwardButtonClicked"
+                    app:srcCompat="@drawable/logoxml"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="150dp"
+                    android:background="#00FFFFFF"
+                    android:clickable="false"
                     app:srcCompat="@drawable/logoxml"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>

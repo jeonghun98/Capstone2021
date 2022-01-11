@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -36,39 +37,33 @@ public class MainActivity extends AppCompatActivity { // 카메라 액티비티
         previewFrame = findViewById(R.id.previewFrame);
         cameraView = findViewById(R.id.cameraView);
         //권한 Main -> Start
-//        AndPermission.with(this) // 카메라, 위치 권한 확인
-//                .runtime()
-//                .permission(Permission.CAMERA,Permission.ACCESS_FINE_LOCATION)
-//                .onGranted(new Action<List<String>>() {
-//                    @Override
-//                    public void onAction(List<String> permissions) {
-//                        //showToast("허용된 권한 갯수 : " + permissions.size());
-//
-//                    }
-//                })
-//                .onDenied(new Action<List<String>>() {
-//                    @Override
-//                    public void onAction(List<String> permissions) {
-//                        //showToast("거부된 권한 갯수 : " + permissions.size());
-//                    }
-//                })
-//                .start();
+        ImageButton button1 = findViewById(R.id.imageButton1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMessage_award(1, 5);
+            }
+        });
+
+        ImageButton button2 = findViewById(R.id.imageButton2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMessage_award(1, 13);
+            }
+        });
     }
 
-    public void AwardButtonClicked(View v) {
-        showMessage_award(1);
-    }
-
-//    public void showToast(String data) { //toast 메소드
-//
-//        Toast.makeText(this, data, Toast.LENGTH_LONG).show();
+//    public void AwardButtonClicked(View v) {
+//        showMessage_award(1);
 //    }
+//toast 메소드
 
-    private void showMessage_award(int key) { //어워드 획득 후 나타나는 dialog 메소드
+    private void showMessage_award(int key, int b_id) { //어워드 획득 후 나타나는 dialog 메소드
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("건물의 아이템을 획득하셨습니다.");
 
-        builder.setNeutralButton("취소", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton("나가기", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
             }
@@ -77,7 +72,10 @@ public class MainActivity extends AppCompatActivity { // 카메라 액티비티
             @Override
             public void onClick(DialogInterface dialog, int which) { //quiz 액티비티 호출
                 Intent intent = new Intent(MainActivity.this, Quiz.class);
-                startActivityForResult(intent, REQUEST_CODE_MENU);
+                if(b_id == 5) intent.putExtra("빌딩",5);
+                else if(b_id == 13) intent.putExtra("빌딩",13);
+                //startActivityForResult(intent, REQUEST_CODE_MENU);
+                startActivity(intent);
             }
         });
         AlertDialog dialog = builder.create();

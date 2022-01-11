@@ -1,5 +1,6 @@
 package com.example.iwu_quiz;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,10 +24,16 @@ import org.json.JSONObject;
 import java.util.Random;
 
 public class Quiz extends AppCompatActivity { // 퀴즈
+    int b_id; //(camera) main에서 넘어온 값(건물 id)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        Intent quizIntent = getIntent();
+        b_id = quizIntent.getIntExtra("빌딩", 0);
+        //Toast.makeText(getApplicationContext(), "b_id" + b_id, Toast.LENGTH_SHORT).show();
+
         TextView t1= (TextView)findViewById(R.id.t1);
         TextView t2= (TextView)findViewById(R.id.t2);
         TextView test1= (TextView)findViewById(R.id.test1);
@@ -41,7 +48,7 @@ public class Quiz extends AppCompatActivity { // 퀴즈
 
         Random random = new Random();
         int rand = random.nextInt(4) + 1;; //정답번호. 랜덤으로 변경 1-4
-        int b_id = 5; //camera main에서 넘어온 값(건물)
+//      int b_id = 13;
         Response.Listener<String> responseListener=new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -144,4 +151,5 @@ public class Quiz extends AppCompatActivity { // 퀴즈
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 }
