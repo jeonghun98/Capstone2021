@@ -62,15 +62,17 @@ public class LogInActivity extends AppCompatActivity {
                                 String userPass = jsonObject.getString("u_pw");
                                 String userName = jsonObject.getString( "u_name" );
                                 String userMajor = jsonObject.getString( "u_major" );
-                                String userPhone = jsonObject.getString( "u_phone" );
+                                int userPhone = jsonObject.getInt( "u_phone" );
+                                int userMid = jsonObject.getInt("u_mid");
 
-                                Toast.makeText(LogInActivity.this,userMajor + " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LogInActivity.this, MenuActivity.class); // 로그인 후 메뉴화면으로 이동
+                                Toast.makeText(LogInActivity.this,userMajor+ " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LogInActivity.this, MainButtonActivity.class); // 로그인 후 메뉴화면으로 이동
                                 intent.putExtra("u_id", userID); // Menu Activity로 유저정보 넘김
                                 intent.putExtra("u_pw", userPass);
                                 intent.putExtra("u_name", userName);
                                 intent.putExtra("u_major", userMajor);
                                 intent.putExtra("u_phone", userPhone);
+                                intent.putExtra("u_mid", userMid);
 
                                 startActivity(intent); // Menu Activity 시작
                             }

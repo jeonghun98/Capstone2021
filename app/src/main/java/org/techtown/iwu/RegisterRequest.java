@@ -12,11 +12,11 @@ import java.util.Map;
 public class RegisterRequest extends StringRequest {
 
     // 서버 URL 설정 ( PHP 파일 연동 )
-    final static private String URL = "http://taekyung.dothome.co.kr/register.php";
+    final static private String URL = "http://breadcat21.dothome.co.kr/register.php";
     private Map<String, String> map;
 
     // 요청 값 받아와서 mapping
-    public RegisterRequest(String userID, String userPassword, String userName, String userMajor, int userPhone, Response.Listener<String> listener) {
+    public RegisterRequest(String userID, String userPassword, String userName, String userMajor, int userPhone, int userMid, Response.Listener<String> listener) {
         super(Method.POST, URL, listener, null);
 
         map = new HashMap<>();
@@ -25,6 +25,7 @@ public class RegisterRequest extends StringRequest {
         map.put("u_name", userName);
         map.put("u_major", userMajor);
         map.put("u_phone", userPhone + "");
+        map.put("u_mid", userMid + "");
     }
 
     @Override

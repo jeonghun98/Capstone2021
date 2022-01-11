@@ -3,6 +3,7 @@ package org.techtown.iwu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,7 +13,7 @@ public class MainButtonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mainsetting); // activity_main 보이기
+        setContentView(R.layout.activity_mainbuttons); // activity_main 보이기
 
 
         MainMapbtn = (ImageButton) findViewById(R.id.mainmapbtn); // MainMapbtn 받아오기
@@ -35,15 +36,17 @@ public class MainButtonActivity extends AppCompatActivity {
             }
         });
 
-        MainStampbtn = (ImageButton) findViewById(R.id.mainstampbtn); // MainStampbtn 받아오기
 
+        Intent intent = getIntent();
+        int MajorCode = intent.getIntExtra("u_mid", 29);
+        MainStampbtn = (ImageButton) findViewById(R.id.mainstampbtn); // MainStampbtn 받아오기
         MainStampbtn.setOnClickListener(new View.OnClickListener() { // stamp 이미지 버튼 클릭 시 수행
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), StampActivity.class); // StampActivity 수행
+                intent.putExtra("u_mid", MajorCode);
                 startActivity(intent);
             }
         });
-
     }
 }

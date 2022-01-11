@@ -22,7 +22,7 @@ public class LoadingActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {  // 로딩 후 구현될 Activity 설정하는 함수
-                Intent intent = new Intent(getBaseContext(), LogInActivity.class); // 로딩화면 후 로그인 화면 실행
+                Intent intent = new Intent(getBaseContext(), MenuActivity.class); // 로딩화면 후 로그인 화면 실행
                 startActivity(intent); // LogInActivity 시작
                 finish(); // LoadingActivity 종료
             }

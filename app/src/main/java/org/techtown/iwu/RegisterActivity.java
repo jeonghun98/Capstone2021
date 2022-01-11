@@ -4,8 +4,10 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Spinner;
 
@@ -15,18 +17,22 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 //회원가입 Activity
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText u_id, u_pw, u_name, u_phone;
-    private Button btn_register;
+    private Button btn_register, btn_major;
+    private TextView u_mid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
 
         // 아이디 값 찾아주기
         u_id = findViewById(R.id.u_id);
@@ -35,6 +41,16 @@ public class RegisterActivity extends AppCompatActivity {
         Spinner spinner = (Spinner)findViewById(R.id.majorbox); // 학과는 Spinner를 통해 받음
         u_phone = findViewById(R.id.u_phone);
 
+        btn_major = findViewById(R.id.majorbtn);
+        btn_major.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userMid = spinner.getSelectedItem().toString();
+                userMid = userMid.substring(userMid.length()-2);
+                u_mid = (TextView) findViewById(R.id.codenum);
+                u_mid.setText(userMid);
+            }
+        });
 
         // 회원가입 버튼 클릭 시 수행
         btn_register = findViewById(R.id.RegisterButton);
@@ -46,7 +62,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String userPass = u_pw.getText().toString();
                 String userName = u_name.getText().toString();
                 String userMajor = spinner.getSelectedItem().toString(); // Spinner 값을 string으로 받아 userMajor로 넘김
+                userMajor = userMajor.substring(0, userMajor.length()-3);
                 int userPhone = Integer.parseInt(u_phone.getText().toString());
+                int userMid = Integer.parseInt(u_mid.getText().toString());
+
+
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -69,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
                 // 서버로 Volley를 이용해 정보 넘김.
-                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userName, userMajor,userPhone, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userName, userMajor,userPhone, userMid, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
 

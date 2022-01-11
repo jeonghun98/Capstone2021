@@ -35,6 +35,7 @@
         android:ems="10"
         android:fontFamily="@font/pfstardust"
         android:hint="학번"
+        android:textColorHint="@color/black"
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -54,6 +55,7 @@
         android:ems="10"
         android:fontFamily="@font/pfstardust"
         android:hint="비밀번호"
+        android:textColorHint="@color/black"
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -76,6 +78,7 @@
         android:inputType="text"
         android:textAlignment="center"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -93,6 +96,7 @@
         android:ems="11"
         android:fontFamily="@font/pfstardust"
         android:hint="전화번호"
+        android:textColorHint="@color/black"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -100,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/majorbox" />
+        app:layout_constraintTop_toBottomOf="@+id/codenum" />
 
     <Spinner
         android:id="@+id/majorbox"
@@ -108,16 +112,54 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="#E600b2ed"
         android:dropDownWidth="200dp"
         android:entries="@array/학과"
         android:fontFamily="@font/pfstardust"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:spinnerMode="dialog"
         android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/majorbtn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/u_name" />
+
+    <android.widget.Button
+        android:id="@+id/majorbtn"
+        android:layout_width="89dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="#00b2ed"
+        android:fontFamily="@font/pfstardust"
+        android:text="선택완료"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/codenum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/u_name"
+        app:layout_constraintVertical_bias="0.545" />
+
+    <TextView
+        android:id="@+id/codenum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/pfstardust"
+        android:gravity="center"
+        android:hint="코드번호"
+        android:textColorHint="@color/black"
+        android:text=''
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/majorbox" />
 
     <android.widget.Button
         android:id="@+id/RegisterButton"
@@ -127,15 +169,16 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="#00b2ed"
-        android:backgroundTint="#00b2ed"
         android:fontFamily="@font/pfstardust"
         android:text="회원가입"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/u_phone" />
+        app:layout_constraintTop_toBottomOf="@+id/u_phone"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@ public class MenuActivity extends AppCompatActivity {
         EnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainButtonActivity.class); // MainActivity 실행
+                Intent intent = new Intent(getApplicationContext(), LogInActivity.class); // MainActivity 실행
                 startActivity(intent);
             }
         });
@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        //LogoutButton(로그아웃)의 Click이벤트
+/*        //LogoutButton(로그아웃)의 Click이벤트
         LogoutButton = (Button) findViewById(R.id.LogOutButton);
 
         LogoutButton.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +49,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show(); // 짧은 메세지 등장
             }
-        });
+        });*/
 
         //InforButton(게임정보)의 Click이벤트
         InforButton = (Button) findViewById(R.id.InforButton);
@@ -61,6 +61,5 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
