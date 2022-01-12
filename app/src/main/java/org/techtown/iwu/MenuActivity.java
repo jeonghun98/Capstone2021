@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-//로그인 후, 메인 화면 전 나오는 메뉴 Activity
+// 로딩 후 나오는 메뉴 Activity
 
 public class MenuActivity extends AppCompatActivity {
     Button EnterButton, RuleButton,LogoutButton, InforButton; // 입장하기, 게임설명, 로그아웃, 게임정보
@@ -39,17 +39,6 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-/*        //LogoutButton(로그아웃)의 Click이벤트
-        LogoutButton = (Button) findViewById(R.id.LogOutButton);
-
-        LogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LogInActivity.class); // LogInActivity 실행
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(),"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show(); // 짧은 메세지 등장
-            }
-        });*/
 
         //InforButton(게임정보)의 Click이벤트
         InforButton = (Button) findViewById(R.id.InforButton);

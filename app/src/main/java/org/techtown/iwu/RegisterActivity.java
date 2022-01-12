@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
-//회원가입 Activity
+// 회원가입 Activity
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -42,13 +42,13 @@ public class RegisterActivity extends AppCompatActivity {
         u_phone = findViewById(R.id.u_phone);
 
         btn_major = findViewById(R.id.majorbtn);
-        btn_major.setOnClickListener(new View.OnClickListener() {
+        btn_major.setOnClickListener(new View.OnClickListener() { // major 선택완료 버튼 누를 시 실행되는 함수
             @Override
             public void onClick(View v) {
-                String userMid = spinner.getSelectedItem().toString();
-                userMid = userMid.substring(userMid.length()-2);
-                u_mid = (TextView) findViewById(R.id.codenum);
-                u_mid.setText(userMid);
+                String userMid = spinner.getSelectedItem().toString(); // spinner에서 선택된 string 가져옴
+                userMid = userMid.substring(userMid.length()-2); // 맨 뒤의 2자리 숫자 받아오기
+                u_mid = (TextView) findViewById(R.id.codenum); // TextView인 codenum의 주소를 받아와서
+                u_mid.setText(userMid); // userMid 값 넣기
             }
         });
 

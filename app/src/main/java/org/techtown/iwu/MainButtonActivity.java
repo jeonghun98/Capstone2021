@@ -18,7 +18,7 @@ public class MainButtonActivity extends AppCompatActivity {
 
         MainMapbtn = (ImageButton) findViewById(R.id.mainmapbtn); // MainMapbtn 받아오기
 
-        MainMapbtn.setOnClickListener(new View.OnClickListener() { // 지도 이미지 버튼 클릭 시 수행
+        MainMapbtn.setOnClickListener(new View.OnClickListener() { // 메인화면에서 지도 버튼 클릭 시 수행
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapActivity.class); // MapActivity 수행
@@ -28,7 +28,7 @@ public class MainButtonActivity extends AppCompatActivity {
 
         MainSetbtn = (ImageButton) findViewById(R.id.mainsetbtn); // MainSettingbtn 받아오기
 
-        MainSetbtn.setOnClickListener(new View.OnClickListener() { // setting 이미지 버튼 클릭 시 수행
+        MainSetbtn.setOnClickListener(new View.OnClickListener() { // 메인화면에서 setting 버튼 클릭 시 수행
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SettingActivity.class); // SettingActivity 수행
@@ -37,15 +37,15 @@ public class MainButtonActivity extends AppCompatActivity {
         });
 
 
-        Intent intent = getIntent();
-        int MajorCode = intent.getIntExtra("u_mid", 29);
+        Intent intent = getIntent(); // 앞의 LogInActivity에서 넘긴 정보 받기
+        int MajorCode = intent.getIntExtra("u_mid", 29); // Major code 받아오기
         MainStampbtn = (ImageButton) findViewById(R.id.mainstampbtn); // MainStampbtn 받아오기
-        MainStampbtn.setOnClickListener(new View.OnClickListener() { // stamp 이미지 버튼 클릭 시 수행
+        MainStampbtn.setOnClickListener(new View.OnClickListener() { // 메인화면에서 stamp 버튼 클릭 시 수행
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), StampActivity.class); // StampActivity 수행
-                intent.putExtra("u_mid", MajorCode);
-                startActivity(intent);
+                intent.putExtra("u_mid", MajorCode); // Major code 넘겨주기
+                startActivity(intent); // StampActivity 시작
             }
         });
     }

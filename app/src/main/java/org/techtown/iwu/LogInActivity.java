@@ -17,7 +17,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-//로그인 Activity
+// 메뉴에서 '입장하기'를 선택하면 나타나는 로그인 Activity
 
 public class LogInActivity extends AppCompatActivity {
     private EditText u_id, u_pw; // 넘겨받는 ID, PW
@@ -38,7 +38,7 @@ public class LogInActivity extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class); // 유저등록하는 Register Activity로 넘어감
+                Intent intent = new Intent(LogInActivity.this, RegisterActivity.class); // 유저등록하는 RegisterActivity로 넘어감
                 startActivity(intent); // Register Activity 시작
             }
         });
@@ -67,14 +67,14 @@ public class LogInActivity extends AppCompatActivity {
 
                                 Toast.makeText(LogInActivity.this,userMajor+ " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this, MainButtonActivity.class); // 로그인 후 메뉴화면으로 이동
-                                intent.putExtra("u_id", userID); // Menu Activity로 유저정보 넘김
+                                intent.putExtra("u_id", userID); // MainActivity로 유저정보 넘김
                                 intent.putExtra("u_pw", userPass);
                                 intent.putExtra("u_name", userName);
                                 intent.putExtra("u_major", userMajor);
                                 intent.putExtra("u_phone", userPhone);
                                 intent.putExtra("u_mid", userMid);
 
-                                startActivity(intent); // Menu Activity 시작
+                                startActivity(intent); // MainActivity 시작
                             }
                             else { // 로그인에 실패한 경우
                                 Toast.makeText(LogInActivity.this, "로그인 실패하였습니다.", Toast.LENGTH_SHORT).show();

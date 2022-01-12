@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+// 각 stamp 영역을 선택하면 나타나는 Activity
+
 public class WhereStampActivity extends AppCompatActivity {
     FrameLayout stampinmap;
     TextView wheretxt;
@@ -24,23 +26,20 @@ public class WhereStampActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wherestamp); // oo호관 화면 실행
 
         Intent intent = getIntent();
-        String where = intent.getStringExtra("where");
+        String where = intent.getStringExtra("where"); // 몇 호관인지 정보 받아와서
         wheretxt = findViewById(R.id.wheretxt);
-        wheretxt.setText(where);
+        wheretxt.setText(where); // 글자 넣기
 
-        stampinmap = (FrameLayout) findViewById(R.id.mapframe);
-        stampinmap.addView(new PointView(this));
-
+        stampinmap = (FrameLayout) findViewById(R.id.mapframe); // frame 영역에 위치 넣기
+        stampinmap.addView(new PointView(this)); // frame 위에 그리기
     }
 
-    public String getWheretxt() {
+    public String getWheretxt() { // 몇 호관인지 string으로 받아와서 return 하는 함수
         String whereis = (String) wheretxt.getText();
         return whereis;
     }
 
-
-
-    public class PointView extends View {
+    public class PointView extends View { // frame 위에 위치 나타내기 시작
         Paint paint = new Paint();
 
         public PointView(Context context) {
@@ -51,7 +50,7 @@ public class WhereStampActivity extends AppCompatActivity {
         public void onDraw(Canvas canvas) {
             Bitmap img = BitmapFactory.decodeResource(getResources(),R.drawable.marker);
             Bitmap bigimg = Bitmap.createScaledBitmap(img, img.getWidth()/16, img.getHeight()/16, false);
-            if (getWheretxt().matches("1호관")) canvas.drawBitmap(bigimg, 727, 820, paint); // 1호관
+            if (getWheretxt().matches("1호관")) canvas.drawBitmap(bigimg, 727, 820, paint); // whereis 가 1호관이면 찍히는 위치
             else if(getWheretxt().matches("2호관")) canvas.drawBitmap(bigimg, 790, 700, paint); // 2호관
             else if (getWheretxt().matches("5호관")) canvas.drawBitmap(bigimg, 545, 980, paint); // 5호관
             else if (getWheretxt().matches("6호관")) canvas.drawBitmap(bigimg, 450, 855, paint); // 6호관

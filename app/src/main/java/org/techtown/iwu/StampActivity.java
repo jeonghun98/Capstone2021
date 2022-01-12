@@ -1,22 +1,15 @@
 package org.techtown.iwu;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+// 메인화면에서 stamp 버튼 클릭 시 나타나는 Activity
 
 public class StampActivity extends AppCompatActivity {
     Button Mapstamp;
@@ -27,37 +20,40 @@ public class StampActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stamp);
-        ButterKnife.bind(this);
+        ButterKnife.bind(this); // ButterKnife 라이브러리 사용 (gradle에 따로 선언 해야 함)
 
         Intent intent = getIntent();
-        int MajorCode = intent.getIntExtra("u_mid", 29);
+        int MajorCode = intent.getIntExtra("u_mid", 29); // 앞의 MainActivity에서 majorcode 받음
 
-        if (1 <= MajorCode && MajorCode <= 6) mapselect = "15호관";//
-        else if (7 <= MajorCode && MajorCode <= 11) mapselect = "5호관";//
-        else if (12 <= MajorCode && MajorCode <= 21) mapselect = "13호관";//
-        else if (22 <= MajorCode && MajorCode <= 29) mapselect = "8호관";//
-        else if (30 <= MajorCode && MajorCode <= 32) mapselect = "7호관";//
-        else if (33 <= MajorCode && MajorCode <= 34) mapselect = "14호관";//
-        else if (35 <= MajorCode && MajorCode <= 39) mapselect = "16호관";//
-        else if (40 <= MajorCode && MajorCode <= 47) mapselect = "20호관";//
+        // MajorCode에 따른 마지막 스탬프 위치 설정
+        if (1 <= MajorCode && MajorCode <= 6) mapselect = "15호관";
+        else if (7 <= MajorCode && MajorCode <= 11) mapselect = "5호관";
+        else if (12 <= MajorCode && MajorCode <= 21) mapselect = "13호관";
+        else if (22 <= MajorCode && MajorCode <= 29) mapselect = "8호관";
+        else if (30 <= MajorCode && MajorCode <= 32) mapselect = "7호관";
+        else if (33 <= MajorCode && MajorCode <= 34) mapselect = "14호관";
+        else if (35 <= MajorCode && MajorCode <= 39) mapselect = "16호관";
+        else if (40 <= MajorCode && MajorCode <= 47) mapselect = "20호관";
         else if (48 <= MajorCode && MajorCode <= 50) mapselect = "28호관";
         else if (51 <= MajorCode && MajorCode <= 53) mapselect = "29호관";
 
-        u_mid = (TextView) findViewById(R.id.stamp12txt);
-        u_mid.setText(mapselect);
+        u_mid = (TextView) findViewById(R.id.stamp12txt); // 12번째 스탬프 textview 주소 받아서
+        u_mid.setText(mapselect); // 위의 mapselect 삽입
 
-        Mapstamp = (Button) findViewById(R.id.MapStamp);
+        Mapstamp = (Button) findViewById(R.id.MapStamp); // stamp내의 2D MAP으로 스탬프현황 보기
         Mapstamp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MapInStampActivity.class); // MapInStampActivity 실행
-                startActivity(intent);
-            }
+                startActivity(intent); // MapInStampActivity 수행행
+           }
         });
 
     }
 
-    @OnClick(R.id.stamp1) void where1(){
+
+    // 각 건물의 stamp 영역을 누르면 나타나는 Activity
+   @OnClick(R.id.stamp1) void where1(){
         Intent intent = new Intent(StampActivity.this, WhereStampActivity.class);
         intent.putExtra("where", "1호관");
         startActivity(intent);
@@ -65,19 +61,19 @@ public class StampActivity extends AppCompatActivity {
 
     @OnClick(R.id.stamp2) void where2() {
         Intent intent = new Intent(StampActivity.this, WhereStampActivity.class);
-        intent.putExtra("where", "2호관");// stamp내의 map 실행
+        intent.putExtra("where", "2호관");
         startActivity(intent);
     }
 
     @OnClick(R.id.stamp3) void where3() {
         Intent intent = new Intent(StampActivity.this, WhereStampActivity.class);
-        intent.putExtra("where", "6호관");// stamp내의 map 실행
+        intent.putExtra("where", "6호관");
         startActivity(intent);
     }
 
     @OnClick(R.id.stamp4) void where4() {
         Intent intent = new Intent(StampActivity.this, WhereStampActivity.class);
-        intent.putExtra("where", "11호관");// stamp내의 map 실행
+        intent.putExtra("where", "11호관");
         startActivity(intent);
     }
 
