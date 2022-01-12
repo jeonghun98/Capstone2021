@@ -52,7 +52,7 @@ public class StampActivity extends AppCompatActivity {
     }
 
 
-    // 각 건물의 stamp 영역을 누르면 나타나는 Activity
+    // 각 건물의 stamp 영역을 누르면 나타나는 WhereActivity 설정
    @OnClick(R.id.stamp1) void where1(){
         Intent intent = new Intent(StampActivity.this, WhereStampActivity.class);
         intent.putExtra("where", "1호관");
