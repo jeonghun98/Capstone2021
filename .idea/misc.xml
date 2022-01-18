@@ -3,13 +3,39 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/drawable/logo3.xml" value="0.2578125" />
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/drawable/logo3xml.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/drawable/logoxml.xml" value="0.26979166666666665" />
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/layout/activity_camera_surface_view.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.25364583333333335" />
-        <entry key="..\:/Users/kimjeonghun/AndroidStudioProjects/IWU_Quiz/app/src/main/res/layout/activity_start.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/drawable/icon.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/drawable/marker.xml" value="0.3162280701754386" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/font/font.xml" value="0.36203703703703705" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_infor.xml" value="0.22" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_loading.xml" value="0.22" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_mainbuttons.xml" value="0.22" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_mainsetting.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_map.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_mapinstamp.xml" value="0.22" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_menu.xml" value="0.3118421052631579" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_register.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_rule.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_setting.xml" value="0.22" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_signup.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_stamp.xml" value="0.1" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_start.xml" value="0.13333333333333333" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/activity_wherestamp.xml" value="0.1" />
+        <entry key="..\:/Users/green/AndroidStudioProjects/IWU/app/src/main/res/layout/spinner.xml" value="0.15231362467866325" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/drawable-v24/border.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/drawable/ic_main_background.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/drawable/icon.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/drawable/inulogoxml.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_loading.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_mainbuttons.xml" value="0.2390625" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_map.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_quiz.xml" value="0.2109375" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_stamp.xml" value="0.264" />
+        <entry key="..\:/Users/kimjeonghun/Downloads/Capstone2021-Before_main (1)/Capstone2021-Before_main/app/src/main/res/layout/activity_wherestamp.xml" value="0.15104166666666666" />
       </map>
     </option>
   </component>

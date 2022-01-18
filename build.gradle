@@ -6,20 +6,14 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
-<<<<<<< HEAD
-
-=======
         classpath 'com.google.gms:google-services:4.3.10'
->>>>>>> e5239febb7a3c646eb749de197d227f7937e976f
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1' // Butterknife 라이브러리 사용 위한 선언
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> e5239febb7a3c646eb749de197d227f7937e976f
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
