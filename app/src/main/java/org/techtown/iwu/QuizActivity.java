@@ -33,17 +33,17 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
         b_id = quizIntent.getIntExtra("b_id", 0);
         //Toast.makeText(getApplicationContext(), "b_id" + b_id, Toast.LENGTH_SHORT).show();
 
-        TextView b_text = (TextView) findViewById(R.id.b_text);
-        TextView qu_text = (TextView) findViewById(R.id.qu_text); // Question text
-        TextView an0_text = (TextView) findViewById(R.id.an0_text); // Answer text(정답)
-        TextView an1_text = (TextView) findViewById(R.id.an1_text); // Answer text(오답)
-        TextView an2_text = (TextView) findViewById(R.id.an2_text); // Answer text(오답)
-        TextView an3_text = (TextView) findViewById(R.id.an3_text); // Answer text(오답)
+        TextView b_text = findViewById(R.id.b_text);
+        TextView qu_text = findViewById(R.id.qu_text); // Question text
+        TextView an0_text = findViewById(R.id.an0_text); // Answer text(정답)
+        TextView an1_text = findViewById(R.id.an1_text); // Answer text(오답)
+        TextView an2_text = findViewById(R.id.an2_text); // Answer text(오답)
+        TextView an3_text = findViewById(R.id.an3_text); // Answer text(오답)
 
-        Button an0_button = findViewById(R.id.an0_button); // Answer button(정답)
-        Button an1_button = findViewById(R.id.an1_button); // Answer button(오답)
-        Button an2_button = findViewById(R.id.an2_button); // Answer button(오답)
-        Button an3_button = findViewById(R.id.an3_button); // Answer button(오답)
+        Button an0_btn = findViewById(R.id.an0_btn); // Answer button(정답)
+        Button an1_btn = findViewById(R.id.an1_btn); // Answer button(오답)
+        Button an2_btn = findViewById(R.id.an2_btn); // Answer button(오답)
+        Button an3_btn = findViewById(R.id.an3_btn); // Answer button(오답)
 
         Random random = new Random();
         rand = random.nextInt(4); // 랜덤으로 변경 0-3
@@ -64,8 +64,16 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
                         String q_an2 = jasonObject.getString("q_an2");
                         String q_an3 = jasonObject.getString("q_an3");
 
+                        //화면에 맞게 string 중간에 \n 추가
+                        String question = "";
+                        String[] Str = q_qu.split("\\\\");
+                        for(int i = 0; i < Str.length; i++) {
+                            question += Str[i];
+                            if(i != Str.length-1) question += "\n";
+                        }
+
                         b_text.setText(b_id + "호관 " + b_name + " Quiz");
-                        qu_text.setText(q_qu);
+                        qu_text.setText(question);
 
                         //랜덤으로 정해진 random 값에 따라 text 에 an0(정답)넣고 나머지에 test 에 an1-3(오답) 넣기
                         if (rand == 0) {
@@ -98,7 +106,7 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
         queue.add(Request);
         //DB에서 정보 가져오기
 
-        an0_button.setOnClickListener(new View.OnClickListener() {
+        an0_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rand == 0) showMessage_quiz(0); // 버튼 0이 정답이라면 -> key 값을 0으로
@@ -106,7 +114,7 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
             }
         });
 
-        an1_button.setOnClickListener(new View.OnClickListener() {
+        an1_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rand == 1) showMessage_quiz(0);
@@ -114,7 +122,7 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
             }
         });
 
-        an2_button.setOnClickListener(new View.OnClickListener() {
+        an2_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rand == 2) showMessage_quiz(0);
@@ -122,7 +130,7 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
             }
         });
 
-        an3_button.setOnClickListener(new View.OnClickListener() {
+        an3_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rand == 3) showMessage_quiz(0);
@@ -145,7 +153,7 @@ public class QuizActivity extends AppCompatActivity { // 퀴즈
                     //intent.putExtra("정답", rand);
                     //setResult(RESULT_OK, intent);
 
-                    //quiz 정답 -> 스탬프 DB에서 사용 예정
+                    //quiz 정답 -> 스탬프 DB에서 사용 예정(코트 추가)
                     finish();
                 }
             }

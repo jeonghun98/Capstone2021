@@ -8,7 +8,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValidateRequest extends StringRequest { // id 중복 체크를 위함
+public class ValidateRequest extends StringRequest { // u_id 중복 체크를 위함
     //서버 url 설정(php파일 연동)
     final static  private String URL="http://taekyung.dothome.co.kr/UserValidate1.php";
     private Map<String,String> map;

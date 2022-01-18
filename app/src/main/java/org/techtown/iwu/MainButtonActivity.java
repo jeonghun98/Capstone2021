@@ -22,7 +22,7 @@ public class MainButtonActivity extends AppCompatActivity {
     ImageButton MainMapbtn, MainSetbtn, MainStampbtn; //이미지버튼 Map, Setting, Stamp 선언
     FrameLayout previewFrame; //카메라 뷰를 위한 frame
     CameraSurfaceView cameraView; //카메라
-    ImageButton button1; //임시 방편 어워드 버튼
+    ImageButton btn; //임시 방편 어워드 버튼
     int b_id = 0;
 
     //호관, 위도, 경도
@@ -39,10 +39,10 @@ public class MainButtonActivity extends AppCompatActivity {
         cameraView = findViewById(R.id.cameraView);
 
         //화면에 나타나는 임시 어워드
-        button1 = findViewById(R.id.imageButton1);
-        button1.setVisibility(View.INVISIBLE);
+        btn = findViewById(R.id.imagebtn);
+        btn.setVisibility(View.INVISIBLE);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showMessage_award();
@@ -81,13 +81,12 @@ public class MainButtonActivity extends AppCompatActivity {
                 startActivity(intent); // StampActivity 시작
             }
         });
-
         startLocationService(); //위치 활성화
     }
 
     private void showMessage_award() { //어워드 획득 후 나타나는 dialog 메소드
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(b_id + "호관의 아이템을 획득하셨습니다.");
+        builder.setMessage(b_id + "호관 아이템을 획득하셨습니다.");
 
         builder.setNeutralButton("나가기", new DialogInterface.OnClickListener() {
             @Override
@@ -118,24 +117,24 @@ public class MainButtonActivity extends AppCompatActivity {
                 double longitude = location.getLongitude();
                 //String message = "start -> Latitude : " + latitude + "\nLongitude : " + longitude;
                 //showToast(message);
-                button1 = findViewById(R.id.imageButton1);
+                btn = findViewById(R.id.imagebtn);
 
                 //사용자의 위치가 해당 건물의 위도,경도를 중심으로 원안에 위치해 있을 때 visible
                 for(int i = 0; i < b_latitude.length; i++) {
                     if (Math.pow(0.0005, 2) >= (Math.pow(b_latitude[i] - latitude, 2) + Math.pow(b_longtitude[i] - longitude, 2))) {
-                        button1.setVisibility(View.VISIBLE);
+                        btn.setVisibility(View.VISIBLE);
                         b_id = b_location[i];
                         break;
                     }
                     else {
-                        button1.setVisibility(View.INVISIBLE);
+                        btn.setVisibility(View.INVISIBLE);
                     }
                 }
             }
             else showToast("location == null");
 
             GPSListener gpsListener = new GPSListener();
-            long minTime = 5000;
+            long minTime = 2000; // 2초마다 위치 요청
             float minDistance = 0;
             manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, gpsListener);
 
@@ -153,16 +152,16 @@ public class MainButtonActivity extends AppCompatActivity {
             //showToast(message);
 
             //사용자의 위치가 해당 건물의 위도,경도를 중심으로 원안에 위치해 있을 때 visible
-            button1 = findViewById(R.id.imageButton1);
+            btn = findViewById(R.id.imagebtn);
             for(int i = 0; i < b_latitude.length; i++) {
                 if (Math.pow(0.0005, 2) >= (Math.pow(b_latitude[i] - latitude, 2) + Math.pow(b_longtitude[i] - longitude, 2))) {
-                    button1.setVisibility(View.VISIBLE);
+                    btn.setVisibility(View.VISIBLE);
                     b_id = b_location[i];
                     //showToast(b_id + "호관 어워드");
                     break;
                 }
                 else {
-                    button1.setVisibility(View.INVISIBLE);
+                    btn.setVisibility(View.INVISIBLE);
                 }
             }
         }
