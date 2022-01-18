@@ -23,6 +23,12 @@ public class MainButtonActivity extends AppCompatActivity {
     FrameLayout previewFrame; //카메라 뷰를 위한 frame
     CameraSurfaceView cameraView; //카메라
     ImageButton button1; //임시 방편 어워드 버튼
+    int b_id = 0;
+
+    //호관, 위도, 경도
+    static final int b_location[] = {5,7,13};
+    static final double b_latitude[] = {37.3756, 37.3744, 37.3759};
+    static final double b_longtitude[] = {126.6347, 126.6336, 126.6333};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +45,7 @@ public class MainButtonActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showMessage_award(5); //위치에 따른 값 변경할 예정
+                showMessage_award();
             }
         });
 
@@ -79,9 +85,9 @@ public class MainButtonActivity extends AppCompatActivity {
         startLocationService(); //위치 활성화
     }
 
-    private void showMessage_award(int b_id) { //어워드 획득 후 나타나는 dialog 메소드
+    private void showMessage_award() { //어워드 획득 후 나타나는 dialog 메소드
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("건물의 아이템을 획득하셨습니다.");
+        builder.setMessage(b_id + "호관의 아이템을 획득하셨습니다.");
 
         builder.setNeutralButton("나가기", new DialogInterface.OnClickListener() {
             @Override
@@ -101,13 +107,12 @@ public class MainButtonActivity extends AppCompatActivity {
                     case 8 : intent.putExtra("b_id",8); break;
                     case 11 : intent.putExtra("b_id",11); break;
                     case 12 : intent.putExtra("b_id",12); break;
+                    case 13 : intent.putExtra("b_id",13); break;
                     case 14 : intent.putExtra("b_id",14); break;
                     case 15 : intent.putExtra("b_id",15); break;
                     case 16 : intent.putExtra("b_id",16); break;
                     case 17 : intent.putExtra("b_id",17); break;
                     case 18 : intent.putExtra("b_id",18); break;
-                    case 20 : intent.putExtra("b_id",20); break;
-                    case 23 : intent.putExtra("b_id",23); break;
                     case 24 : intent.putExtra("b_id",24); break;
                     case 28 : intent.putExtra("b_id",28); break;
                     case 29 : intent.putExtra("b_id",29); break;
@@ -122,7 +127,7 @@ public class MainButtonActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    //해당 코드는 4G(3G)를 사용하지 않는 핸드폰에서 작용하지 않아 수정 중
+    //해당 코드는 4G(3G)를 사용하지 않는 핸드폰에서 작용하지 않아서 -> 현재 virtual device 만 가능
 
     public void startLocationService() {
         LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
@@ -135,15 +140,19 @@ public class MainButtonActivity extends AppCompatActivity {
                 //showToast(message);
                 button1 = findViewById(R.id.imageButton1);
 
-                //건물의 중심을 기준으로 해당 원 안에 있으면 visible
-                if (Math.pow(0.0005, 2) >= (Math.pow(37.3756 - latitude, 2) + Math.pow(126.6346 - longitude, 2))) {
-                    button1.setVisibility(View.VISIBLE);
-                }
-                else {
-                    button1.setVisibility(View.INVISIBLE);
+                //사용자의 위치가 해당 건물의 위도,경도를 중심으로 원안에 위치해 있을 때 visible
+                for(int i = 0; i < b_latitude.length; i++) {
+                    if (Math.pow(0.0005, 2) >= (Math.pow(b_latitude[i] - latitude, 2) + Math.pow(b_longtitude[i] - longitude, 2))) {
+                        button1.setVisibility(View.VISIBLE);
+                        b_id = b_location[i];
+                        break;
+                    }
+                    else {
+                        button1.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
-            else if(location == null) showToast("Null");
+            else showToast("location == null");
 
             GPSListener gpsListener = new GPSListener();
             long minTime = 5000;
@@ -163,13 +172,18 @@ public class MainButtonActivity extends AppCompatActivity {
             //String message = "location -> Latitude : " + latitude + "\nLongitude : " + longitude;
             //showToast(message);
 
+            //사용자의 위치가 해당 건물의 위도,경도를 중심으로 원안에 위치해 있을 때 visible
             button1 = findViewById(R.id.imageButton1);
-
-            if (Math.pow(0.0005, 2) >= (Math.pow(37.3756 - latitude, 2) + Math.pow(126.6346 - longitude, 2))) {
-                button1.setVisibility(View.VISIBLE);
-            }
-            else {
-                button1.setVisibility(View.INVISIBLE);
+            for(int i = 0; i < b_latitude.length; i++) {
+                if (Math.pow(0.0005, 2) >= (Math.pow(b_latitude[i] - latitude, 2) + Math.pow(b_longtitude[i] - longitude, 2))) {
+                    button1.setVisibility(View.VISIBLE);
+                    b_id = b_location[i];
+                    //showToast(b_id + "호관 어워드");
+                    break;
+                }
+                else {
+                    button1.setVisibility(View.INVISIBLE);
+                }
             }
         }
 
