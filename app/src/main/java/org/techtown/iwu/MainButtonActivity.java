@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -31,10 +32,9 @@ public class MainButtonActivity extends AppCompatActivity {
         previewFrame = findViewById(R.id.previewFrame);
         cameraView = findViewById(R.id.cameraView);
 
-
         //화면에 나타나는 임시 어워드
         button1 = findViewById(R.id.imageButton1);
-        button1.setVisibility(View.VISIBLE);
+        button1.setVisibility(View.INVISIBLE);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +76,7 @@ public class MainButtonActivity extends AppCompatActivity {
             }
         });
 
+        startLocationService(); //위치 활성화
     }
 
     private void showMessage_award(int b_id) { //어워드 획득 후 나타나는 dialog 메소드
@@ -123,66 +124,66 @@ public class MainButtonActivity extends AppCompatActivity {
 
     //해당 코드는 4G(3G)를 사용하지 않는 핸드폰에서 작용하지 않아 수정 중
 
-//    public void startLocationService() {
-//        LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-//        try {
-//            Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//            if (location != null) {
-//                double latitude = location.getLatitude();
-//                double longitude = location.getLongitude();
-//                String message = "start -> Latitude : " + latitude + "\nLongitude : " + longitude;
-//                button1 = findViewById(R.id.imageButton1);
-//
-//                if(latitude < 37.37567 && latitude > 37.3749 && longitude < 126.6341 && longitude > 126.6336) {
-//                    button1.setVisibility(View.VISIBLE);
-//                }
-//                else {
-//                    button1.setVisibility(View.INVISIBLE);
-//                }
-//                showToast(message);
-//            }
-//
-//            GPSListener gpsListener = new GPSListener();
-//            long minTime = 5000;
-//            float minDistance = 0;
-//            manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, gpsListener);
-//            //Toast.makeText(getApplicationContext(), "내 위치확인 요청함", Toast.LENGTH_SHORT).show();
-//
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//
-//    class GPSListener implements LocationListener {
-//        @Override
-//        public void onLocationChanged(Location location) {
-//            Double latitude = location.getLatitude();
-//            Double longitude = location.getLongitude();
-//            String message = "location -> Latitude : " + latitude + "\nLongitude : " + longitude;
-//            showToast(message);
-//
-//            button1 = findViewById(R.id.imageButton1);
-//
-//            if(latitude < 37.37567 && latitude > 37.3749 && longitude < 126.6341 && longitude > 126.6336) {
-//                button1.setVisibility(View.VISIBLE);
-//            }
-//            else {
-//                button1.setVisibility(View.INVISIBLE);
-//            }
-//        }
-//
-//        @Override
-//        public void onStatusChanged(String provider, int status, Bundle extras) {}
-//
-//        @Override
-//        public void onProviderEnabled(String provider) {}
-//
-//        @Override
-//        public void onProviderDisabled(String provider) {}
-//    }
-//
-//    public void showToast(String message) {
-//        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-//    }
+    public void startLocationService() {
+        LocationManager manager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        try {
+            Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (location != null) {
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+                //String message = "start -> Latitude : " + latitude + "\nLongitude : " + longitude;
+                //showToast(message);
+                button1 = findViewById(R.id.imageButton1);
+
+                //건물의 중심을 기준으로 해당 원 안에 있으면 visible
+                if (Math.pow(0.0005, 2) >= (Math.pow(37.3756 - latitude, 2) + Math.pow(126.6346 - longitude, 2))) {
+                    button1.setVisibility(View.VISIBLE);
+                }
+                else {
+                    button1.setVisibility(View.INVISIBLE);
+                }
+            }
+            else if(location == null) showToast("Null");
+
+            GPSListener gpsListener = new GPSListener();
+            long minTime = 5000;
+            float minDistance = 0;
+            manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, gpsListener);
+
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+    class GPSListener implements LocationListener {
+        @Override
+        public void onLocationChanged(Location location) {
+            Double latitude = location.getLatitude();
+            Double longitude = location.getLongitude();
+            //String message = "location -> Latitude : " + latitude + "\nLongitude : " + longitude;
+            //showToast(message);
+
+            button1 = findViewById(R.id.imageButton1);
+
+            if (Math.pow(0.0005, 2) >= (Math.pow(37.3756 - latitude, 2) + Math.pow(126.6346 - longitude, 2))) {
+                button1.setVisibility(View.VISIBLE);
+            }
+            else {
+                button1.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {}
+
+        @Override
+        public void onProviderEnabled(String provider) {}
+
+        @Override
+        public void onProviderDisabled(String provider) {}
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
 }

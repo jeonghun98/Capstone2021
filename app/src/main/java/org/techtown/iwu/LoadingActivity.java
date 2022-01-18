@@ -26,7 +26,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         AndPermission.with(this) // 카메라, 위치 권한 받고 확인
                 .runtime()
-                .permission(Permission.CAMERA,Permission.ACCESS_COARSE_LOCATION)
+                .permission(Permission.CAMERA,Permission.ACCESS_COARSE_LOCATION, Permission.ACCESS_FINE_LOCATION)
                 .onGranted(new Action<List<String>>() {
                     @Override
                     public void onAction(List<String> permissions) {
