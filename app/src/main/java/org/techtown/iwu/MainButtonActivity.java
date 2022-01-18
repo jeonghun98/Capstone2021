@@ -98,28 +98,8 @@ public class MainButtonActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) { //quiz 액티비티 호출
                 Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
-                switch (b_id){ // b_id 추가 수정 예정
-                    case 1 : intent.putExtra("b_id",1); break; // quiz activity -> 사용자가 발견한 b_id 넘겨줌
-                    case 2 : intent.putExtra("b_id",2); break;
-                    case 5 : intent.putExtra("b_id",5); break;
-                    case 6 : intent.putExtra("b_id",6); break;
-                    case 7 : intent.putExtra("b_id",7); break;
-                    case 8 : intent.putExtra("b_id",8); break;
-                    case 11 : intent.putExtra("b_id",11); break;
-                    case 12 : intent.putExtra("b_id",12); break;
-                    case 13 : intent.putExtra("b_id",13); break;
-                    case 14 : intent.putExtra("b_id",14); break;
-                    case 15 : intent.putExtra("b_id",15); break;
-                    case 16 : intent.putExtra("b_id",16); break;
-                    case 17 : intent.putExtra("b_id",17); break;
-                    case 18 : intent.putExtra("b_id",18); break;
-                    case 24 : intent.putExtra("b_id",24); break;
-                    case 28 : intent.putExtra("b_id",28); break;
-                    case 29 : intent.putExtra("b_id",29); break;
-                    case 30 : intent.putExtra("b_id",30); break;
-                    case 31 : intent.putExtra("b_id",31); break; //미유
-                    case 32 : intent.putExtra("b_id",32); break; //솔찬
-                }
+                if(b_id > 0 && b_id < 33)
+                    intent.putExtra("b_id", b_id); // quiz activity -> 사용자가 발견한 b_id 넘겨줌
                 startActivity(intent);
             }
         });
