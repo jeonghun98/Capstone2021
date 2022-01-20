@@ -25,10 +25,23 @@ public class MainButtonActivity extends AppCompatActivity {
     ImageButton btn; //임시 방편 어워드 버튼
     int b_id = 0;
 
-    //호관, 위도, 경도
-    static final int b_location[] = {5,7,13};
-    static final double b_latitude[] = {37.3756, 37.3744, 37.3759};
-    static final double b_longtitude[] = {126.6347, 126.6336, 126.6333};
+    //호관, 위도 + 경도(임시로 3개만 넣음)
+    static final int b_name[] = {5,7,13};
+    static final double b_location[][] = {{37.375722, 126.634515}, {37.374544, 126.633402}, {37.375958, 126.633253}};
+
+    //퀴즈 DB 완성 후 사용 예정
+//    static final int b_name[] = {1,2,6,11,12,17,18,24,30,31,32}; //31 -> 미유, 32 -> 솔찬
+//    static final String b_name_str[] = {"미유카페", "솔찬공원"};
+//    static final double b_location[][] = {{37.376690, 126.634591},{37.377547, 126.633710},{37.375177, 126.633909},
+//            {37.374472, 126.631827},{37.375283, 126.632570},{37.374129, 126.630849},
+//            {37.373926, 126.629960},{37.375974, 126.635774},{37.373775, 126.634232},
+//            {37.372568, 126.631217},{37.371343, 126.629608}};
+//
+//    static final int b_name_major[] = {5,7,8,13,14,15,16,20,28,29};
+//    static final double b_location_major[][]={{37.375722, 126.634515},{37.374544, 126.633402},{37.373660, 126.632508},
+//            {37.375958, 126.633253},{37.376634, 126.632989},{37.375525, 126.631994},
+//            {37.374711, 126.631248},{37.374885, 126.629619}, {37.371838, 126.632742}
+//            {37.372351, 126.631278}};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,10 +133,10 @@ public class MainButtonActivity extends AppCompatActivity {
                 btn = findViewById(R.id.imagebtn);
 
                 //사용자의 위치가 해당 건물의 위도,경도를 중심으로 원안에 위치해 있을 때 visible
-                for(int i = 0; i < b_latitude.length; i++) {
-                    if (Math.pow(0.0005, 2) >= (Math.pow(b_latitude[i] - latitude, 2) + Math.pow(b_longtitude[i] - longitude, 2))) {
+                for(int i = 0; i < b_location.length; i++) {
+                    if (Math.pow(0.0004, 2) >= (Math.pow(b_location[i][0] - latitude, 2) + Math.pow(b_location[i][1] - longitude, 2))) {
                         btn.setVisibility(View.VISIBLE);
-                        b_id = b_location[i];
+                        b_id = b_name[i];
                         break;
                     }
                     else {
@@ -153,10 +166,10 @@ public class MainButtonActivity extends AppCompatActivity {
 
             //사용자의 위치가 해당 건물의 위도,경도를 중심으로 원안에 위치해 있을 때 visible
             btn = findViewById(R.id.imagebtn);
-            for(int i = 0; i < b_latitude.length; i++) {
-                if (Math.pow(0.0005, 2) >= (Math.pow(b_latitude[i] - latitude, 2) + Math.pow(b_longtitude[i] - longitude, 2))) {
+            for(int i = 0; i < b_location.length; i++) {
+                if (Math.pow(0.0004, 2) >= (Math.pow(b_location[i][0] - latitude, 2) + Math.pow(b_location[i][1] - longitude, 2))) {
                     btn.setVisibility(View.VISIBLE);
-                    b_id = b_location[i];
+                    b_id = b_name[i];
                     //showToast(b_id + "호관 어워드");
                     break;
                 }

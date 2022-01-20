@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 if(userID.equals("")){
                     AlertDialog.Builder builder=new AlertDialog.Builder( RegisterActivity.this );
-                    dialog = builder.setMessage("아이디는 빈 칸일 수 없습니다")
+                    dialog = builder.setMessage("학번은 빈 칸일 수 없습니다")
                             .setPositiveButton("확인",null)
                             .create();
                     dialog.show();

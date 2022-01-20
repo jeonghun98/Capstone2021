@@ -2,6 +2,7 @@ package org.techtown.iwu;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,12 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
+
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.geometry.LatLngBounds;
+import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.Align;
 import com.naver.maps.map.overlay.LocationOverlay;
+import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.util.FusedLocationSource;
+import com.naver.maps.map.util.MarkerIcons;
 
 
 // 지도 + 현재위치 불러오는 네이버맵 Activity
@@ -32,6 +40,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private FusedLocationSource mLocationSource; // 최적 위치 반환을 위해 선언
     private NaverMap mNaverMap; // 네이버맵 선언
+
+    private Marker markers[] = new Marker[21];
+    private static final int b_name[] = {1,2,5,6,7,8,11,12,13,14,15,16,17,18,20,24,28,29,30,31,32};
+    private static final String b_name_str[] = {"미유카페", "솔찬공원"};
+    private static final double b_location[][] = {{37.376690, 126.634591}, {37.377547, 126.633710}, {37.375722, 126.634515},
+            {37.375177, 126.633909},{37.374544, 126.633402},{37.373660, 126.632508},
+            {37.374472, 126.631827},{37.375283, 126.632570},{37.375958, 126.633253},
+            {37.376634, 126.632989},{37.375525, 126.631994},{37.374711, 126.631248},
+            {37.374129, 126.630849},{37.373926, 126.629960},{37.374885, 126.629619},
+            {37.375974, 126.635774},{37.371838, 126.632742},{37.372351, 126.631278},
+            {37.373775, 126.634232},{37.372568, 126.631217},{37.371343, 126.629608}};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +72,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mLocationSource = new FusedLocationSource(this, PERMISSION_REQUEST_CODE);
     }
 
+    private void setMakers(@NonNull NaverMap naverMap){
+        for(int i = 0; i < markers.length; i++) {
+            markers[i] = new Marker();
+            markers[i].setPosition(new LatLng(b_location[i][0], b_location[i][1]));
+            markers[i].setWidth(60);
+            markers[i].setHeight(80);
+            if(b_name[i] == 31 || b_name[i] == 32)
+                markers[i].setCaptionText(b_name_str[i-19]);
+            else markers[i].setCaptionText(b_name[i] + "호관");
+            markers[i].setCaptionAligns(Align.Top);
+            markers[i].setMap(naverMap);
+        }
+    }
 
     // onMapReady에서 NaverMap 객체를 받음
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         Log.d( TAG, "onMapReady");
 
+        setMakers(naverMap);
+
         // NaverMap 객체 받아서 NaverMap 객체에 위치 소스 지정
         mNaverMap = naverMap;
         mNaverMap.setLocationSource(mLocationSource);
+
+        //min, max 설정 및 지도 이동 범위 설정
+        naverMap.setMinZoom(15.0);
+        naverMap.setMaxZoom(18.0);
+        naverMap.setExtent(new LatLngBounds(new LatLng(37.370463, 126.627007), new LatLng(37.379180, 126.637237)));
 
         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE);
         naverMap.addOnOptionChangeListener(() -> { // 지도 옵션 변경에 대한 이벤트 리스너 등록

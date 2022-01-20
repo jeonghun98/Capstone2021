@@ -22,6 +22,7 @@ import org.json.JSONObject;
 public class LogInActivity extends AppCompatActivity {
     private EditText u_id, u_pw; // 넘겨받는 ID, PW
     private Button btn_login, btn_signup; // 로그인, 유저등록 버튼
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,23 @@ public class LogInActivity extends AppCompatActivity {
                 // EditText에 현재 입력되어있는 값을 get(가져온다)해옴
                 String userID = u_id.getText().toString(); // string으로 받기
                 String userPass = u_pw.getText().toString();
+
+                if(userID.equals("")){
+                    AlertDialog.Builder builder=new AlertDialog.Builder( LogInActivity.this );
+                    dialog = builder.setMessage("학번을 입력해 주세요.")
+                            .setPositiveButton("확인",null)
+                            .create();
+                    dialog.show();
+                    return;
+                }
+                if(userPass.equals("")){
+                    AlertDialog.Builder builder=new AlertDialog.Builder( LogInActivity.this );
+                    dialog = builder.setMessage("비밀번호를 입력해 주세요.")
+                            .setPositiveButton("확인",null)
+                            .create();
+                    dialog.show();
+                    return;
+                }
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
