@@ -100,7 +100,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //min, max 설정 및 지도 이동 범위 설정
         naverMap.setMinZoom(15.0);
         naverMap.setMaxZoom(18.0);
-        naverMap.setExtent(new LatLngBounds(new LatLng(37.370463, 126.627007), new LatLng(37.379180, 126.637237)));
+        naverMap.setExtent(new LatLngBounds(new LatLng(37.370463, 126.627007), new LatLng(37.376835, 126.634652)));
 
         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE);
         naverMap.addOnOptionChangeListener(() -> { // 지도 옵션 변경에 대한 이벤트 리스너 등록

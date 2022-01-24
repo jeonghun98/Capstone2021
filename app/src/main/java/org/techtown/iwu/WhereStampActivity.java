@@ -79,7 +79,7 @@ public class WhereStampActivity extends AppCompatActivity {
             //기본 건물 11개 찍기
             canvas.drawBitmap(stamp1, 727, 820, paint); // 1호관 찍히는 위치
             canvas.drawBitmap(stamp2, 790, 700, paint); // 2호관
-            canvas.drawBitmap(stamp6, 450, 855, paint); // 6호관
+            canvas.drawBitmap(stamp6, 425, 855, paint); // 6호관
             canvas.drawBitmap(stamp11, 365, 530, paint); // 11 호관
             canvas.drawBitmap(stamp12, 485, 610, paint); // 12 호관
             canvas.drawBitmap(stamp17, 360, 360, paint); // 17 호관

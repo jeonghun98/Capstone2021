@@ -84,7 +84,7 @@ public class LogInActivity extends AppCompatActivity {
                                 int userMid = jsonObject.getInt("u_mid");
 
                                 Toast.makeText(LogInActivity.this,userMajor+ " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LogInActivity.this, MainButtonActivity.class); // 로그인 후 메뉴화면으로 이동
+                                Intent intent = new Intent(LogInActivity.this, MenuActivity.class); // 로그인 후 메뉴화면으로 이동
                                 intent.putExtra("u_id", userID); // MainActivity로 유저정보 넘김
                                 intent.putExtra("u_pw", userPass);
                                 intent.putExtra("u_name", userName);
