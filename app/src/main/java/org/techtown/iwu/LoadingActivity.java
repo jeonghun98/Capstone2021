@@ -48,7 +48,7 @@ public class LoadingActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: //화면 누르면 발생하는 event
-                Intent intent = new Intent(getBaseContext(), LogInActivity.class); // 로딩화면 후 로그인 화면 실행
+                Intent intent = new Intent(getBaseContext(), MenuActivity.class); // 로딩화면 후 로그인 화면 실행
                 startActivity(intent); // LogInActivity 시작
                 finish(); // LoadingActivity 종료
                 break;
