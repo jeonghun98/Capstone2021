@@ -123,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String userName = u_name.getText().toString();
                 String userMajor = spinner.getSelectedItem().toString(); // Spinner 값을 string으로 받아 userMajor로 넘김
                 userMajor = userMajor.substring(0, userMajor.length()-3);
+                int userStamp =0;
 
                 //학번 중복처리 안 한 경우
                 if(!u_id_check) {
@@ -202,7 +203,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
                 // 서버로 Volley를 이용해 정보 넘김.
-                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userName, userMajor,userPhone, userMid, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID,userPass,userName, userMajor,userPhone, userMid,userStamp, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
 

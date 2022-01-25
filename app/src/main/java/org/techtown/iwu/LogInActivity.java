@@ -82,6 +82,7 @@ public class LogInActivity extends AppCompatActivity {
                                 String userMajor = jsonObject.getString( "u_major" );
                                 int userPhone = jsonObject.getInt( "u_phone" );
                                 int userMid = jsonObject.getInt("u_mid");
+                                int userStamp = jsonObject.getInt("u_stamp");
 
                                 Toast.makeText(LogInActivity.this,userMajor+ " "+ userName+"학생, 환영합니다!",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LogInActivity.this, MainButtonActivity.class); // 로그인 후 메뉴화면으로 이동
@@ -91,6 +92,7 @@ public class LogInActivity extends AppCompatActivity {
                                 intent.putExtra("u_major", userMajor);
                                 intent.putExtra("u_phone", userPhone);
                                 intent.putExtra("u_mid", userMid);
+                                intent.putExtra("u_stamp", userStamp);
 
                                 startActivity(intent); // MainButtonActivity 시작
                             }
