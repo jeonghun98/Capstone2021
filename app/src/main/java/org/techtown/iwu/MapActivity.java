@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ import com.naver.maps.map.util.MarkerIcons;
 // 지도 + 현재위치 불러오는 네이버맵 Activity
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+    private Button btn_back; // [ay.han]뒤로가기 버튼 생성자
 
     private static final String TAG = "MapActivity";
 
@@ -70,6 +73,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         // 위치를 반환하는 구현체인 FusedLocationSource 생성
         mLocationSource = new FusedLocationSource(this, PERMISSION_REQUEST_CODE);
+
+
+        //[ay.han] 뒤로가기 버튼 별도로 만들기.
+        //툴바 구현을 한다면 필요 없는 부분. 안드로이드 기기별 뒤로가기 버튼 없는 경우 고려 필요.
+        btn_back = findViewById(R.id.back_button);// [ay.han]버튼 리소스 연결
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
     }
 
     private void setMakers(@NonNull NaverMap naverMap){

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,5 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:name="com.naver.maps.map.MapFragment" />
+
+    <!--뒤로가기 버튼 추가 -->
+    <Button
+        android:id="@+id/back_button"
+        android:layout_width="126dp"
+        android:layout_height="41dp"
+        android:text="Back_Button"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="674dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
